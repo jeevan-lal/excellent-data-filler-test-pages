@@ -1,0 +1,10 @@
+{
+  "scenarioId": "15",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/15",
+    "autoSubmit": true,
+    "delayMs": 300,
+    "fields": []
+  }
+}
