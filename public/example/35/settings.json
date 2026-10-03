@@ -1,0 +1,55 @@
+{
+  "scenarioId": "35",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/35",
+    "description": "Form with First Name, Last Name, and Email with Submit and Reset buttons using inline onclick attribute functions for testing handler overrides",
+    "fields": [
+      {
+        "name": "firstName",
+        "selector": "#firstName35",
+        "fieldSelectorQuery": "input[name=\"firstName\"]",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "lastName",
+        "selector": "#lastName35",
+        "fieldSelectorQuery": "input[name=\"lastName\"]",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "email",
+        "selector": "#userEmail35",
+        "fieldSelectorQuery": "input[name=\"email\"]",
+        "type": "email",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "selector": "#submitBtn35",
+        "type": "button",
+        "action": "click",
+        "inlineEvent": "onclick=\"submitForm(event)\"",
+        "globalHandler": "window.submitForm",
+        "aliasHandler": "window.handleExample35Submit"
+      },
+      {
+        "selector": "#resetBtn35",
+        "type": "button",
+        "action": "click",
+        "inlineEvent": "onclick=\"resetForm(event)\"",
+        "globalHandler": "window.resetForm",
+        "aliasHandler": "window.handleExample35Reset"
+      }
+    ],
+    "overrideTargets": {
+      "submit": "window.submitForm",
+      "reset": "window.resetForm",
+      "buttonSubmitProperty": "document.getElementById('submitBtn35').onclick",
+      "buttonResetProperty": "document.getElementById('resetBtn35').onclick"
+    }
+  }
+}

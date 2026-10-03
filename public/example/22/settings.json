@@ -1,0 +1,15 @@
+{
+  "scenarioId": "22",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/22",
+    "autoSubmit": false,
+    "delayMs": 400,
+    "fields": [
+      { "selector": "#contactEmail22", "type": "email" },
+      { "selector": "#packageSelect22", "type": "select", "triggerDynamic": true },
+      { "selector": "#radioSection22 input[type='radio']", "type": "radio", "matchByLabel": true },
+      { "selector": "#checkboxSection22 input[type='checkbox']", "type": "checkbox", "matchByLabel": true }
+    ]
+  }
+}

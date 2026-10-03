@@ -1,0 +1,23 @@
+{
+  "scenarioId": "26",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/26",
+    "description": "Beneficiary registry table with 15 unique records and full-page reload edit flow",
+    "table": {
+      "selector": "#beneficiary-table",
+      "recordsCount": 15,
+      "editButtonSelector": "a[id^='edit-btn-']"
+    },
+    "editForm": {
+      "urlPattern": "/scenarios/26?id=",
+      "fields": [
+        { "selector": "#regNo", "type": "text", "readonly": true },
+        { "selector": "#benName", "type": "text" },
+        { "selector": "#fatherName", "type": "text" },
+        { "selector": "#userEmail", "type": "email" },
+        { "selector": "#submitBtn26", "type": "button", "action": "click" }
+      ]
+    }
+  }
+}

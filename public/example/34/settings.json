@@ -1,0 +1,25 @@
+{
+  "scenarioId": "34",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/34",
+    "description": "Public video player with manual controls (no autoplay) streaming an open-source clip under 5 minutes max",
+    "media": {
+      "videoSelector": "#sampleVideo34",
+      "autoplay": false,
+      "maxDurationMinutes": 5,
+      "defaultDuration": "3:26",
+      "source": "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4",
+      "alternateSources": [
+        "https://vjs.zencdn.net/v/oceans.mp4",
+        "https://media.w3.org/2010/05/sintel/trailer.mp4"
+      ]
+    },
+    "actions": [
+      { "selector": "#playPauseBtn34", "type": "button", "action": "click" },
+      { "selector": "#restartBtn34", "type": "button", "action": "click" },
+      { "selector": "#muteBtn34", "type": "button", "action": "click" },
+      { "selector": "#videoSelect34", "type": "select" }
+    ]
+  }
+}

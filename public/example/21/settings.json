@@ -1,0 +1,14 @@
+{
+  "scenarioId": "21",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/21",
+    "autoSubmit": false,
+    "delayMs": 300,
+    "fields": [
+      { "selector": "#searchInput21", "type": "text", "search": true },
+      { "selector": "#searchBtn21", "type": "button", "action": "click" },
+      { "selector": ".edit-record-btn", "type": "button", "action": "click" }
+    ]
+  }
+}

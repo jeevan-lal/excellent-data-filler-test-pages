@@ -2,31 +2,31 @@
   <div>
     <!-- Submission Feedback Notice -->
     <div v-if="submitted" id="submission-success-banner" class="p-4 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-300 rounded-xl text-xs mb-6 transition-all">
-      <div class="flex items-center gap-2 mb-1.5 font-bold text-emerald-950 dark:text-emerald-200">
+      <div class="flex items-center gap-2 mb-1 font-bold text-emerald-950 dark:text-emerald-200">
         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        <span>Form Submitted Successfully</span>
+        <strong class="font-semibold block text-emerald-950 dark:text-emerald-200">Form submitted successfully!</strong>
       </div>
       <p class="mb-2 text-emerald-800 dark:text-emerald-300">
-        All form control values were registered and verified:
+        Thank you, your information has been received.
       </p>
       <pre class="bg-white/80 dark:bg-slate-900/80 p-3 rounded-lg border border-emerald-100 dark:border-emerald-900/60 font-mono text-[11px] overflow-x-auto text-slate-800 dark:text-slate-200">{{ formattedData }}</pre>
     </div>
 
     <form @submit.prevent="handleSubmit" id="comprehensive-controls-form" class="space-y-5">
-      <!-- Row 1: Full Name & Email -->
+      <!-- Row 1: First Name & Email -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label for="fullName1B" class="block text-[11px] font-bold tracking-wider text-slate-800 dark:text-slate-300 uppercase mb-1">
-            Full Name <span class="text-red-500">*</span>
+          <label for="firstName1B" class="block text-[11px] font-bold tracking-wider text-slate-800 dark:text-slate-300 uppercase mb-1">
+            First Name <span class="text-red-500">*</span>
           </label>
-          <input id="fullName1B" name="fullName" v-model="form.fullName" type="text" required placeholder="Jane Doe" class="w-full px-3.5 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-colors" />
+          <input id="firstName1B" name="firstName" v-model="form.firstName" type="text" required placeholder="Alex" class="w-full px-3.5 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-colors" />
         </div>
 
         <div>
           <label for="email1B" class="block text-[11px] font-bold tracking-wider text-slate-800 dark:text-slate-300 uppercase mb-1">
-            Email Address <span class="text-red-500">*</span>
+            Email <span class="text-red-500">*</span>
           </label>
-          <input id="email1B" name="email" v-model="form.email" type="email" required placeholder="jane.doe@example.com" class="w-full px-3.5 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-colors" />
+          <input id="email1B" name="email" v-model="form.email" type="email" required placeholder="alex@example.com" class="w-full px-3.5 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-colors" />
         </div>
       </div>
 
@@ -151,7 +151,7 @@
         </button>
 
         <button type="submit" id="submit-example-1b" class="bg-[#0a2368] hover:bg-[#07194d] dark:bg-blue-600 dark:hover:bg-blue-700 text-white text-xs font-semibold px-6 py-2.5 rounded-lg transition-colors cursor-pointer shadow-xs">
-          Submit Form 1B
+          Submit Form
         </button>
       </div>
     </form>
@@ -159,9 +159,10 @@
 </template>
 
 <script setup>
-import { reactive, ref, computed } from 'vue';
+import { reactive, ref, computed, nextTick } from 'vue';
 
 const form = reactive({
+  firstName: '',
   fullName: '',
   email: '',
   birthDate: '',
@@ -181,9 +182,16 @@ const formattedData = computed(() => {
 
 function handleSubmit() {
   submitted.value = true;
+  nextTick(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 }
 
 function handleReset() {
+  form.firstName = '';
   form.fullName = '';
   form.email = '';
   form.birthDate = '';

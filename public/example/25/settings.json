@@ -1,0 +1,55 @@
+{
+  "scenarioId": "25",
+  "version": "1.0.0",
+  "scraperConfig": {
+    "targetUrl": "/scenarios/25",
+    "description": "Scraper & tabular extraction test sandbox featuring 6 distinct table archetypes",
+    "tables": [
+      {
+        "id": "horizontal-headings",
+        "type": "horizontal_headings",
+        "selector": "table#table-horizontal-headings",
+        "hasThead": true,
+        "rowCount": 6
+      },
+      {
+        "id": "vertical-headings",
+        "type": "vertical_headings",
+        "selector": "table#table-vertical-headings",
+        "hasThead": false,
+        "rowHeaderSelector": "th[scope='row']",
+        "rowCount": 8
+      },
+      {
+        "id": "rowspan-spanned",
+        "type": "rowspan_spanned",
+        "selector": "table#table-rowspan-spanned",
+        "hasThead": true,
+        "hasRowspan": true,
+        "hasColspan": true
+      },
+      {
+        "id": "no-headers",
+        "type": "no_headers",
+        "selector": "table#table-no-headers",
+        "hasThead": false,
+        "rowCount": 6
+      },
+      {
+        "id": "form-elements",
+        "type": "form_elements",
+        "selector": "table#table-form-elements",
+        "hasFormInputs": true,
+        "rowCount": 5
+      },
+      {
+        "id": "with-images",
+        "type": "with_images",
+        "selector": "table#table-with-images",
+        "hasImages": true,
+        "imageSelector": "img",
+        "rowCount": 5
+      }
+    ]
+  }
+}

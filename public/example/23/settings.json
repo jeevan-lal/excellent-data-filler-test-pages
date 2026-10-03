@@ -1,0 +1,40 @@
+{
+  "scenarioId": "23",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/23",
+    "autoSubmit": true,
+    "delayMs": 400,
+    "fields": [
+      {
+        "selector": "#multiSelect23",
+        "type": "select-multiple",
+        "values": [
+          "Frontend Developer",
+          "Backend Engineer"
+        ]
+      },
+      {
+        "selector": "#loadRowsBtn23",
+        "type": "button",
+        "action": "click"
+      },
+      {
+        "selector": "#dynamicTable23 input[type='text']",
+        "type": "text"
+      },
+      {
+        "selector": "#dynamicTable23 select",
+        "type": "select"
+      },
+      {
+        "selector": "#dynamicTable23 input[type='checkbox']",
+        "type": "checkbox"
+      },
+      {
+        "selector": "#dynamicTable23 input[type='radio']",
+        "type": "radio"
+      }
+    ]
+  }
+}

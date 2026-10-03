@@ -1,31 +1,19 @@
 <template>
   <div>
     <!-- Success Alert Banner if Submitted -->
-    <div
-      v-if="submissionResult"
-      class="mb-6 p-4 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 text-xs leading-relaxed"
-    >
-      <span class="font-bold block text-sm mb-1 text-emerald-950 dark:text-emerald-200">
-        Form Submitted Successfully
-      </span>
+    <div v-if="submissionResult" id="success-notice" class="mb-6 p-4 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 text-xs leading-relaxed">
+      <strong class="font-semibold block text-emerald-950 dark:text-emerald-200 mb-0.5">Form submitted successfully!</strong>
+      <span>Thank you, your information has been received.</span>
       <pre class="font-mono text-[11px] whitespace-pre-wrap mt-2 overflow-x-auto">{{ submissionResult }}</pre>
     </div>
 
     <form @submit.prevent="handleSubmit" id="demographic-form">
-      <!-- Full Legal Name -->
+      <!-- First Name -->
       <div class="mb-5">
         <label for="fullName" class="block text-[11px] font-bold tracking-wider text-slate-800 dark:text-slate-300 uppercase mb-2">
-          Full Legal Name <span class="text-red-500">*</span>
+          First Name *
         </label>
-        <input
-          id="fullName"
-          name="fullName"
-          v-model="form.fullName"
-          type="text"
-          placeholder="e.g. Rahul Sharma"
-          required
-          class="w-full px-4 py-2.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all"
-        />
+        <input id="fullName" name="firstName" v-model="form.fullName" type="text" placeholder="Alex" required class="w-full px-4 py-2.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all" />
       </div>
 
       <!-- Email & Phone Grid -->
@@ -34,29 +22,14 @@
           <label for="email" class="block text-[11px] font-bold tracking-wider text-slate-800 dark:text-slate-300 uppercase mb-2">
             Email Address <span class="text-red-500">*</span>
           </label>
-          <input
-            id="email"
-            name="email"
-            v-model="form.email"
-            type="email"
-            placeholder="rahul.sharma@example.com"
-            required
-            class="w-full px-4 py-2.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all"
-          />
+          <input id="email" name="email" v-model="form.email" type="email" placeholder="alex@example.com" required class="w-full px-4 py-2.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all" />
         </div>
 
         <div>
           <label for="phone" class="block text-[11px] font-bold tracking-wider text-slate-800 dark:text-slate-300 uppercase mb-2">
             Phone Number
           </label>
-          <input
-            id="phone"
-            name="phone"
-            v-model="form.phone"
-            type="tel"
-            placeholder="+91 98765 43210"
-            class="w-full px-4 py-2.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all"
-          />
+          <input id="phone" name="phone" v-model="form.phone" type="tel" placeholder="+1 555-0199" class="w-full px-4 py-2.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all" />
         </div>
       </div>
 
@@ -76,15 +49,10 @@
           State / Territory <span class="text-red-500">*</span>
         </label>
         <div class="relative">
-          <select
-            id="state"
-            name="state"
-            v-model="form.state"
-            @change="handleStateChange"
-            required
-            class="w-full appearance-none px-4 py-2.5 pr-10 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all cursor-pointer"
-          >
-            <option value="" disabled>Select State</option>
+          <select id="state" name="state" v-model="form.state" @change="handleStateChange" :disabled="loadingStates" required class="w-full appearance-none px-4 py-2.5 pr-10 text-sm bg-white dark:bg-slate-800 disabled:bg-slate-50/70 dark:disabled:bg-slate-850 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 disabled:text-slate-400 dark:disabled:text-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all cursor-pointer disabled:cursor-not-allowed">
+            <option value="" disabled>
+              {{ loadingStates ? 'Loading states...' : 'Select State' }}
+            </option>
             <option v-for="state in states" :key="state.id" :value="state.id">
               {{ state.name }}
             </option>
@@ -103,14 +71,7 @@
           District
         </label>
         <div class="relative">
-          <select
-            id="district"
-            name="district"
-            v-model="form.district"
-            @change="handleDistrictChange"
-            :disabled="!form.state || loadingDistricts"
-            class="w-full appearance-none px-4 py-2.5 pr-10 text-sm bg-white dark:bg-slate-800 disabled:bg-slate-50/70 dark:disabled:bg-slate-850 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 disabled:text-slate-400 dark:disabled:text-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all cursor-pointer disabled:cursor-not-allowed"
-          >
+          <select id="district" name="district" v-model="form.district" @change="handleDistrictChange" :disabled="!form.state || loadingDistricts" class="w-full appearance-none px-4 py-2.5 pr-10 text-sm bg-white dark:bg-slate-800 disabled:bg-slate-50/70 dark:disabled:bg-slate-850 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 disabled:text-slate-400 dark:disabled:text-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all cursor-pointer disabled:cursor-not-allowed">
             <option value="" disabled>
               {{ loadingDistricts ? 'Loading districts...' : (form.state ? 'Select District' : '— Select state first —') }}
             </option>
@@ -132,14 +93,7 @@
           Block / Tehsil
         </label>
         <div class="relative">
-          <select
-            id="block"
-            name="block"
-            v-model="form.block"
-            @change="handleBlockChange"
-            :disabled="!form.district || loadingBlocks"
-            class="w-full appearance-none px-4 py-2.5 pr-10 text-sm bg-white dark:bg-slate-800 disabled:bg-slate-50/70 dark:disabled:bg-slate-850 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 disabled:text-slate-400 dark:disabled:text-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all cursor-pointer disabled:cursor-not-allowed"
-          >
+          <select id="block" name="block" v-model="form.block" @change="handleBlockChange" :disabled="!form.district || loadingBlocks" class="w-full appearance-none px-4 py-2.5 pr-10 text-sm bg-white dark:bg-slate-800 disabled:bg-slate-50/70 dark:disabled:bg-slate-850 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 disabled:text-slate-400 dark:disabled:text-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all cursor-pointer disabled:cursor-not-allowed">
             <option value="" disabled>
               {{ loadingBlocks ? 'Loading blocks...' : (form.district ? 'Select Block' : '— Select district first —') }}
             </option>
@@ -161,13 +115,7 @@
           Village / Locality
         </label>
         <div class="relative">
-          <select
-            id="village"
-            name="village"
-            v-model="form.village"
-            :disabled="!form.block || loadingVillages"
-            class="w-full appearance-none px-4 py-2.5 pr-10 text-sm bg-white dark:bg-slate-800 disabled:bg-slate-50/70 dark:disabled:bg-slate-850 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 disabled:text-slate-400 dark:disabled:text-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all cursor-pointer disabled:cursor-not-allowed"
-          >
+          <select id="village" name="village" v-model="form.village" :disabled="!form.block || loadingVillages" class="w-full appearance-none px-4 py-2.5 pr-10 text-sm bg-white dark:bg-slate-800 disabled:bg-slate-50/70 dark:disabled:bg-slate-850 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 disabled:text-slate-400 dark:disabled:text-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all cursor-pointer disabled:cursor-not-allowed">
             <option value="" disabled>
               {{ loadingVillages ? 'Loading villages...' : (form.block ? 'Select Village' : '— Select block first —') }}
             </option>
@@ -188,31 +136,16 @@
         <label for="pincode" class="block text-[11px] font-bold tracking-wider text-slate-800 dark:text-slate-300 uppercase mb-2">
           Pincode / Zip Code
         </label>
-        <input
-          id="pincode"
-          name="pincode"
-          v-model="form.pincode"
-          type="text"
-          placeholder="411001"
-          class="w-full px-4 py-2.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all"
-        />
+        <input id="pincode" name="pincode" v-model="form.pincode" type="text" placeholder="10001" class="w-full px-4 py-2.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 transition-all" />
       </div>
 
       <!-- Actions -->
       <div class="pt-6 mt-8 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-        <button
-          type="button"
-          @click="handleReset"
-          class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors cursor-pointer"
-        >
+        <button type="button" @click="handleReset" class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors cursor-pointer">
           Reset Form
         </button>
 
-        <button
-          type="submit"
-          id="submit-button"
-          class="bg-[#0a2368] hover:bg-[#07194d] dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-semibold text-sm px-7 py-2.5 rounded-lg shadow-xs transition-colors cursor-pointer"
-        >
+        <button type="submit" id="submit-button" class="bg-[#0a2368] hover:bg-[#07194d] dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-semibold text-sm px-7 py-2.5 rounded-lg shadow-xs transition-colors cursor-pointer">
           Submit Form
         </button>
       </div>
@@ -221,32 +154,33 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, onMounted } from 'vue';
 import { CASCADING_DATA } from '../data/cascadingLocations';
 
 const form = reactive({
-  fullName: 'Rahul Sharma',
-  email: 'rahul.sharma@example.com',
-  phone: '+91 98765 43210',
+  fullName: '',
+  email: '',
+  phone: '',
   state: '',
   district: '',
   block: '',
   village: '',
-  pincode: '411001'
+  pincode: ''
 });
 
-const states = CASCADING_DATA.states;
+const states = ref([]);
 const availableDistricts = ref([]);
 const availableBlocks = ref([]);
 const availableVillages = ref([]);
 
+const loadingStates = ref(false);
 const loadingDistricts = ref(false);
 const loadingBlocks = ref(false);
 const loadingVillages = ref(false);
 const submissionResult = ref('');
 
 const jurisdictionStatus = computed(() => {
-  if (loadingDistricts.value || loadingBlocks.value || loadingVillages.value) {
+  if (loadingStates.value || loadingDistricts.value || loadingBlocks.value || loadingVillages.value) {
     return 'Fetching cascading data...';
   }
   if (!form.state) {
@@ -264,7 +198,28 @@ const jurisdictionStatus = computed(() => {
   return 'Jurisdiction hierarchy complete';
 });
 
-function handleStateChange() {
+async function loadStates() {
+  loadingStates.value = true;
+  try {
+    const res = await fetch('/api/locations/states');
+    if (res.ok) {
+      const json = await res.json();
+      states.value = json.data || json;
+    } else {
+      states.value = CASCADING_DATA.states;
+    }
+  } catch {
+    states.value = CASCADING_DATA.states;
+  } finally {
+    loadingStates.value = false;
+  }
+}
+
+onMounted(() => {
+  loadStates();
+});
+
+async function handleStateChange() {
   form.district = '';
   form.block = '';
   form.village = '';
@@ -275,13 +230,22 @@ function handleStateChange() {
   if (!form.state) return;
 
   loadingDistricts.value = true;
-  setTimeout(() => {
+  try {
+    const res = await fetch(`/api/locations/districts?state=${encodeURIComponent(form.state)}`);
+    if (res.ok) {
+      const json = await res.json();
+      availableDistricts.value = json.data || [];
+    } else {
+      availableDistricts.value = CASCADING_DATA.districts[form.state] || [];
+    }
+  } catch {
     availableDistricts.value = CASCADING_DATA.districts[form.state] || [];
+  } finally {
     loadingDistricts.value = false;
-  }, 250);
+  }
 }
 
-function handleDistrictChange() {
+async function handleDistrictChange() {
   form.block = '';
   form.village = '';
   availableBlocks.value = [];
@@ -290,29 +254,53 @@ function handleDistrictChange() {
   if (!form.district) return;
 
   loadingBlocks.value = true;
-  setTimeout(() => {
+  try {
+    const res = await fetch(`/api/locations/blocks?district=${encodeURIComponent(form.district)}`);
+    if (res.ok) {
+      const json = await res.json();
+      availableBlocks.value = json.data || [];
+    } else {
+      availableBlocks.value = CASCADING_DATA.blocks[form.district] || [
+        { id: `${form.district}-BLK1`, name: 'Central Block' },
+        { id: `${form.district}-BLK2`, name: 'North Block' }
+      ];
+    }
+  } catch {
     availableBlocks.value = CASCADING_DATA.blocks[form.district] || [
       { id: `${form.district}-BLK1`, name: 'Central Block' },
       { id: `${form.district}-BLK2`, name: 'North Block' }
     ];
+  } finally {
     loadingBlocks.value = false;
-  }, 250);
+  }
 }
 
-function handleBlockChange() {
+async function handleBlockChange() {
   form.village = '';
   availableVillages.value = [];
 
   if (!form.block) return;
 
   loadingVillages.value = true;
-  setTimeout(() => {
+  try {
+    const res = await fetch(`/api/locations/villages?block=${encodeURIComponent(form.block)}`);
+    if (res.ok) {
+      const json = await res.json();
+      availableVillages.value = json.data || [];
+    } else {
+      availableVillages.value = CASCADING_DATA.villages[form.block] || [
+        { id: `${form.block}-VIL1`, name: 'Sector 1' },
+        { id: `${form.block}-VIL2`, name: 'Sector 2' }
+      ];
+    }
+  } catch {
     availableVillages.value = CASCADING_DATA.villages[form.block] || [
       { id: `${form.block}-VIL1`, name: 'Sector 1' },
       { id: `${form.block}-VIL2`, name: 'Sector 2' }
     ];
+  } finally {
     loadingVillages.value = false;
-  }, 250);
+  }
 }
 
 function handleReset() {

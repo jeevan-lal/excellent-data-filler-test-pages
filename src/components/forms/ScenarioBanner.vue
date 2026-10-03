@@ -26,11 +26,11 @@
 defineProps({
   text: {
     type: String,
-    default: 'Selects trigger asynchronous mock fetch on change (200-300ms delay). Ideal for extension timing calibration.'
+    default: 'Options load automatically when you make a selection.'
   },
   statusLabel: {
     type: String,
-    default: 'DOM'
+    default: 'Status'
   },
   statusValue: {
     type: String,

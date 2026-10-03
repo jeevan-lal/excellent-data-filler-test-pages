@@ -2,8 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import ScenarioView from '../views/ScenarioView.vue';
 import ConfirmationView from '../views/ConfirmationView.vue';
+import Example14StatusView from '../views/Example14StatusView.vue';
 import Example12View from '../views/scenarios/Example12View.vue';
 import Example13View from '../views/scenarios/Example13View.vue';
+import Example37AddView from '../views/scenarios/Example37AddView.vue';
 import FrameTargetView from '../views/scenarios/FrameTargetView.vue';
 import { SCENARIOS } from '../data/scenarios';
 
@@ -27,8 +29,20 @@ const routes = [
     name: 'example3-confirmation',
     component: ConfirmationView,
     meta: {
-      title: 'Submission Confirmed (302 Redirect Target) - Example 3 | ED Filler Test Suite'
+      title: 'Submission Confirmed - Example 3 | ED Filler Test Suite'
     }
+  },
+  {
+    path: '/examples/14/status',
+    name: 'example14-status',
+    component: Example14StatusView,
+    meta: {
+      title: 'Verification Status - Example 14 | ED Filler Test Suite'
+    }
+  },
+  {
+    path: '/examples/14/confirmation',
+    redirect: '/examples/14/status'
   },
   {
     path: '/examples/12',
@@ -51,6 +65,18 @@ const routes = [
     name: 'frame-target',
     component: FrameTargetView,
     props: true
+  },
+  {
+    path: '/examples/37/add',
+    name: 'example37-add',
+    component: Example37AddView,
+    meta: {
+      title: 'Add Email - Example 37 | ED Filler Test Suite'
+    }
+  },
+  {
+    path: '/examples/:id',
+    redirect: (to) => `/scenarios/${to.params.id}`
   }
 ];
 
@@ -71,7 +97,7 @@ router.afterEach((to) => {
       document.title = `Form Sandbox (${to.params.id}) | ED Filler Test Suite`;
     }
   } else if (to.name === 'frame-target') {
-    document.title = `Encapsulated Frame Context (${to.params.id}) | ED Filler Test Suite`;
+    document.title = `Embedded Frame Content (${to.params.id}) | ED Filler Test Suite`;
   } else if (to.meta && to.meta.title) {
     document.title = to.meta.title;
   } else {

@@ -22,6 +22,26 @@ import Example17 from './Example17.vue';
 import Example18 from './Example18.vue';
 import Example18_1 from './Example18_1.vue';
 import Example19 from './Example19.vue';
+import Example20 from './Example20.vue';
+import Example21 from './Example21.vue';
+import Example22 from './Example22.vue';
+import Example23 from './Example23.vue';
+import Example24 from './Example24.vue';
+import Example25 from './Example25.vue';
+import Example26 from './Example26.vue';
+import Example27 from './Example27.vue';
+import Example28 from './Example28.vue';
+import Example29 from './Example29.vue';
+import Example30 from './Example30.vue';
+import Example31 from './Example31.vue';
+import Example32 from './Example32.vue';
+import Example33 from './Example33.vue';
+import Example34 from './Example34.vue';
+import Example35 from './Example35.vue';
+import Example36 from './Example36.vue';
+import Example37 from './Example37.vue';
+import Example38 from './Example38.vue';
+import Example39 from './Example39.vue';
 
 export const EXAMPLE_COMPONENTS = {
   '1A': Example1A,
@@ -52,7 +72,27 @@ export const EXAMPLE_COMPONENTS = {
   '18': Example18,
   '18-1': Example18_1,
   '18_1': Example18_1,
-  '19': Example19
+  '19': Example19,
+  '20': Example20,
+  '21': Example21,
+  '22': Example22,
+  '23': Example23,
+  '24': Example24,
+  '25': Example25,
+  '26': Example26,
+  '27': Example27,
+  '28': Example28,
+  '29': Example29,
+  '30': Example30,
+  '31': Example31,
+  '32': Example32,
+  '33': Example33,
+  '34': Example34,
+  '35': Example35,
+  '36': Example36,
+  '37': Example37,
+  '38': Example38,
+  '39': Example39
 };
 
 export function getExampleComponent(id) {
@@ -85,5 +125,25 @@ export {
   Example17,
   Example18,
   Example18_1,
-  Example19
+  Example19,
+  Example20,
+  Example21,
+  Example22,
+  Example23,
+  Example24,
+  Example25,
+  Example26,
+  Example27,
+  Example28,
+  Example29,
+  Example30,
+  Example31,
+  Example32,
+  Example33,
+  Example34,
+  Example35,
+  Example36,
+  Example37,
+  Example38,
+  Example39
 };

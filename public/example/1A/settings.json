@@ -1,0 +1,160 @@
+[
+  {
+    "uuid": "muqfh8hfh1hwguhrow9ylr0j76tknzuj",
+    "title": "Small and Simple Form (Example 1A) | ED Filler Test Suite",
+    "description": "Example 1A",
+    "active": true,
+    "createdAt": "02-10-2026 09:23 AM",
+    "updatedAt": "02-10-2026 10:32 AM",
+    "settings": {
+      "siteStartupURL": "https://excellent-filler-test-pages.vercel.app/scenarios/1A",
+      "isStopFillerWhenExcelNotFound": true,
+      "isShowStatusBar": true
+    },
+    "forms": [
+      {
+        "pageURL": "https://excellent-filler-test-pages.vercel.app/scenarios/1A",
+        "pageMatchType": "1",
+        "fields": [
+          {
+            "fieldSelectorType": 1,
+            "isActive": true,
+            "events": {
+              "isRunEvent": true,
+              "eventsList": [
+                "change",
+                "focus"
+              ]
+            },
+            "forceCheckElement": true,
+            "forceCheckElementVisible": true,
+            "radioOptions": {
+              "optionsData": {}
+            },
+            "checkboxOptions": {
+              "optionsData": {}
+            },
+            "fieldName": "FIRST-NAME-*",
+            "fieldType": "1",
+            "fieldSelectorQuery": "input[name=\"firstName\"]",
+            "fieldLabel": "FIRST NAME *",
+            "isFillDefaultValue": true
+          },
+          {
+            "fieldSelectorType": 1,
+            "isActive": true,
+            "events": {
+              "isRunEvent": true,
+              "eventsList": [
+                "change",
+                "focus"
+              ]
+            },
+            "forceCheckElement": true,
+            "forceCheckElementVisible": true,
+            "radioOptions": {
+              "optionsData": {}
+            },
+            "checkboxOptions": {
+              "optionsData": {}
+            },
+            "fieldName": "EMAIL-*",
+            "fieldType": "1",
+            "fieldSelectorQuery": "input[name=\"email\"]",
+            "fieldLabel": "EMAIL *",
+            "isFillDefaultValue": true
+          },
+          {
+            "fieldSelectorType": "1",
+            "isActive": false,
+            "events": {
+              "isRunEvent": true,
+              "eventsList": [
+                "click",
+                "focus"
+              ]
+            },
+            "forceCheckElement": true,
+            "forceCheckElementVisible": true,
+            "fieldName": "submit-btn",
+            "fieldType": "7",
+            "isIgnoreFieldInExcelTemplate": true,
+            "fieldSelectorQuery": "button[type=\"submit\"]"
+          }
+        ],
+        "successResp": {
+          "pageURL": "https://excellent-filler-test-pages.vercel.app/scenarios/1A",
+          "responseType": "1",
+          "inPageSettings": {
+            "fieldSelectorQuery": "div#success-notice > strong"
+          },
+          "message": [
+            "Form submitted successfully!"
+          ],
+          "action": {
+            "name": "1",
+            "params": {
+              "url": {
+                "value": "https://excellent-filler-test-pages.vercel.app/scenarios/1A",
+                "label": "Page URL",
+                "type": "text",
+                "placeholder": "Enter Redirect Page URL",
+                "expanded": true
+              },
+              "isIframe": {
+                "type": "switch",
+                "value": false,
+                "label": "",
+                "text": "If iframe is being used in the page then",
+                "variant": "info",
+                "size": "small"
+              },
+              "iframeWin": {
+                "ifVariable": "isIframe",
+                "ifValue": true,
+                "type": "select-input",
+                "label": "",
+                "select": {
+                  "placeholder": "",
+                  "value": "1",
+                  "options": [
+                    {
+                      "text": "Top Window",
+                      "value": "1"
+                    },
+                    {
+                      "text": "Parent Window",
+                      "value": "2"
+                    }
+                  ],
+                  "expanded": false,
+                  "style": "width: 180px;"
+                },
+                "input": {
+                  "disabledVariable": "select",
+                  "disabledValue": "1",
+                  "placeholder": "Number of Parent Window",
+                  "value": "",
+                  "type": "number",
+                  "expanded": true
+                }
+              }
+            }
+          }
+        },
+        "errorResp": {
+          "pageURL": "https://excellent-filler-test-pages.vercel.app/scenarios/1A"
+        },
+        "viewElement": {},
+        "isActive": true
+      }
+    ],
+    "formFieldNames": [
+      "FIRST-NAME-*",
+      "EMAIL-*",
+      "field_3",
+      "submit-btn"
+    ],
+    "segments": {}
+  }
+]

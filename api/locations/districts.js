@@ -1,0 +1,25 @@
+import { CASCADING_DATA } from './_data.js';
+
+export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  const { state, stateId } = req.query || {};
+  const targetState = state || stateId || '';
+
+  // Brief latency to simulate real network request
+  await new Promise((resolve) => setTimeout(resolve, 200));
+
+  const districts = targetState ? (CASCADING_DATA.districts[targetState] || []) : [];
+
+  return res.status(200).json({
+    success: true,
+    state: targetState,
+    data: districts
+  });
+}

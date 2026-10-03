@@ -1,0 +1,32 @@
+{
+  "scenarioId": "30",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/30",
+    "description": "Master header form and dynamic multi-control table pre-populated with existing records",
+    "masterFields": [
+      { "selector": "#firstName30", "type": "text" },
+      { "selector": "#lastName30", "type": "text" },
+      { "selector": "#userEmail30", "type": "email" }
+    ],
+    "table": {
+      "selector": "#dynamic-grid-table",
+      "addRowButtonSelector": "#addRowBtn30",
+      "initialRowsCount": 2,
+      "columns": [
+        { "name": "input", "selector": "input[id^='input-text-']", "type": "text" },
+        { "name": "date", "selector": "input[id^='input-date-']", "type": "date" },
+        { "name": "select", "selector": "select[id^='select-category-']", "type": "select" },
+        { "name": "selectMulti", "selector": "select[id^='select-multi-']", "type": "select-multiple" },
+        { "name": "checkboxActive", "selector": "input[id^='chk-active-']", "type": "checkbox" },
+        { "name": "checkboxUrgent", "selector": "input[id^='chk-urgent-']", "type": "checkbox" },
+        { "name": "radioStandard", "selector": "input[id^='radio-p1-']", "type": "radio" },
+        { "name": "radioUrgent", "selector": "input[id^='radio-p2-']", "type": "radio" }
+      ]
+    },
+    "actions": [
+      { "selector": "#submitBtn30", "type": "button", "action": "click" },
+      { "selector": "#resetBtn30", "type": "button", "action": "click" }
+    ]
+  }
+}

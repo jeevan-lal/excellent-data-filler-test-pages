@@ -1,0 +1,26 @@
+{
+  "scenarioId": "38",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/38",
+    "description": "Student directory table with realtime search filtering across multiple fields and animated row deletion on click for records with Delete action",
+    "search": {
+      "inputSelector": "#studentSearchInput38",
+      "resetButtonSelector": "#resetStudentsBtn38"
+    },
+    "table": {
+      "tableSelector": "#student-table",
+      "rowSelector": "tr[id^=\"student-row-\"]",
+      "deleteButtonSelector": "button[id^=\"deleteBtn38_\"]",
+      "totalInitialRecords": 20,
+      "columns": [
+        { "index": 0, "name": "srNo", "label": "#" },
+        { "index": 1, "name": "name", "label": "Name" },
+        { "index": 2, "name": "fatherName", "label": "Father's Name" },
+        { "index": 3, "name": "gender", "label": "Gender" },
+        { "index": 4, "name": "class", "label": "Class" },
+        { "index": 5, "name": "action", "label": "Action" }
+      ]
+    }
+  }
+}

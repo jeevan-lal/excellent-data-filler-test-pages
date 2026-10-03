@@ -1,0 +1,26 @@
+{
+  "scenarioId": "27",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/27",
+    "description": "Beneficiary table with 15 records and inline input, select, checkbox, and radio controls",
+    "table": {
+      "selector": "#beneficiary-form-table",
+      "recordsCount": 15,
+      "columns": [
+        { "name": "srNo", "type": "text" },
+        { "name": "regNo", "type": "text" },
+        { "name": "benName", "type": "text" },
+        { "name": "fatherName", "type": "text" },
+        { "name": "inputNote", "selector": "input[id^='input-note-']", "type": "text" },
+        { "name": "selectStatus", "selector": "select[id^='select-status-']", "type": "select" },
+        { "name": "checkboxVerified", "selector": "input[id^='chk-doc-']", "type": "checkbox" },
+        { "name": "radioPayoutMode", "selector": "input[name^='payout_mode_']", "type": "radio" }
+      ]
+    },
+    "actions": [
+      { "selector": "#submitBtn27", "type": "button", "action": "click" },
+      { "selector": "#resetBtn27", "type": "button", "action": "click" }
+    ]
+  }
+}

@@ -1,12 +1,12 @@
 export const CATEGORIES = [
-  { id: 'all', label: 'All', count: 22 },
-  { id: 'reload-direct', label: 'Reload & Direct', count: 7 },
-  { id: 'ajax-spa', label: 'AJAX & SPA', count: 5 },
+  { id: 'all', label: 'All', count: 42 },
+  { id: 'reload-direct', label: 'Reload & Direct', count: 9 },
+  { id: 'ajax-spa', label: 'AJAX & SPA', count: 22 },
   { id: 'modals-alerts', label: 'Modals & Alerts', count: 2 },
   { id: 'cascading', label: 'Cascading', count: 1 },
-  { id: 'multi-form-url', label: 'Multi-Form & Multi-URL', count: 3 },
+  { id: 'multi-form-url', label: 'Multi-Form & Multi-URL', count: 4 },
   { id: 'file-upload', label: 'File Upload', count: 1 },
-  { id: 'iframes', label: 'iFrames', count: 3 }
+  { id: 'iframes', label: 'Embedded Frames', count: 3 }
 ];
 
 export const SCENARIOS = [
@@ -39,7 +39,7 @@ export const SCENARIOS = [
     category: 'reload-direct',
     tag: 'Page Reload',
     tagVariant: 'gray',
-    description: 'Page executes standard HTTP reload; success notification appears in top flash DOM container.',
+    description: 'Page automatically reloads upon submission, displaying a confirmation message at the top of the page.',
     mechanism: 'Flash Banner',
     path: '/scenarios/1'
   },
@@ -50,8 +50,8 @@ export const SCENARIOS = [
     category: 'reload-direct',
     tag: 'Native Alert',
     tagVariant: 'amber',
-    description: 'Synchronous reload immediately prompts a native window.alert() confirmation box.',
-    mechanism: 'window.alert()',
+    description: 'Page reloads immediately upon submission and displays a confirmation dialog box.',
+    mechanism: 'Alert Dialog',
     path: '/scenarios/2'
   },
   {
@@ -61,8 +61,8 @@ export const SCENARIOS = [
     category: 'reload-direct',
     tag: 'Redirect',
     tagVariant: 'gray',
-    description: 'Dispatches payload and performs an HTTP redirect to a separate confirmation landing URL.',
-    mechanism: '302 Redirect',
+    description: 'Submits your details and redirects to a dedicated confirmation landing page.',
+    mechanism: 'Page Redirect',
     path: '/scenarios/3'
   },
   {
@@ -90,12 +90,12 @@ export const SCENARIOS = [
   {
     id: '6',
     displayId: 'Example 6',
-    title: 'AJAX Form (No Page Reload)',
+    title: 'Instant API Form (No Page Reload)',
     category: 'ajax-spa',
     tag: 'AJAX / SPA',
     tagVariant: 'emerald',
-    description: 'Standard SPA single-page flow. Form calls API asynchronously and shows inline green banner.',
-    mechanism: 'Async Fetch',
+    description: 'Form submits instantly without page reloads and displays an inline confirmation message.',
+    mechanism: 'Instant Submit',
     path: '/scenarios/6'
   },
   {
@@ -105,19 +105,19 @@ export const SCENARIOS = [
     category: 'ajax-spa',
     tag: 'Mixed Handlers',
     tagVariant: 'gray',
-    description: 'Valid posts render in-page notice; validation errors trigger native popup alert without reloading.',
-    mechanism: 'Split Flow',
+    description: 'Successful submissions show an in-page notice, while empty fields trigger a helpful alert dialog.',
+    mechanism: 'Notice + Alert',
     path: '/scenarios/7'
   },
   {
     id: '8',
     displayId: 'Example 8',
-    title: 'Delayed Form + AJAX Success',
+    title: 'Delayed Form + In-Page Success',
     category: 'ajax-spa',
     tag: 'Delayed Mount',
     tagVariant: 'purple',
-    description: 'Form markup is injected after an intentional 2500ms delay to test polling and observer injection.',
-    mechanism: '2500ms Delay',
+    description: 'Form components load after a brief initialization delay before displaying inputs.',
+    mechanism: 'Delayed Form',
     path: '/scenarios/8'
   },
   {
@@ -127,8 +127,8 @@ export const SCENARIOS = [
     category: 'reload-direct',
     tag: 'Record ID',
     tagVariant: 'gray',
-    description: 'Reload outputs dynamic record identifier (e.g. REC-1049) to be recorded back into the workbook.',
-    mechanism: 'Token Extraction',
+    description: 'Generates a unique tracking reference code upon submission.',
+    mechanism: 'Generated ID',
     path: '/scenarios/9'
   },
   {
@@ -138,19 +138,19 @@ export const SCENARIOS = [
     category: 'reload-direct',
     tag: 'Summary Panel',
     tagVariant: 'gray',
-    description: 'Post-reload layout renders stacked composite block with partially saved records and validation logs.',
-    mechanism: 'Batch Feedback',
+    description: 'Displays a detailed summary panel containing saved records alongside any pending notices.',
+    mechanism: 'Summary Status',
     path: '/scenarios/10'
   },
   {
     id: '10-1',
     displayId: 'Example 10-1',
-    title: 'DOM Success + Warning Alert',
+    title: 'In-Page Success + Warning Alert',
     category: 'multi-form-url',
     tag: 'Hybrid Alert',
     tagVariant: 'amber',
-    description: 'Displays a saved record container while simultaneously launching a non-fatal warning alert dialog.',
-    mechanism: 'Dual Trigger',
+    description: 'Displays a saved confirmation notice while launching a helpful reminder alert dialog.',
+    mechanism: 'Notice + Alert',
     path: '/scenarios/10-1'
   },
   {
@@ -160,7 +160,7 @@ export const SCENARIOS = [
     category: 'cascading',
     tag: 'Cascading',
     tagVariant: 'sky',
-    description: 'State -> District -> Block -> Village. Each tier fetches options asynchronously before enabling the next.',
+    description: 'State -> District -> Block -> Village. Selecting an option automatically loads the next dropdown tier.',
     mechanism: '4 Selects',
     path: '/scenarios/11'
   },
@@ -171,7 +171,7 @@ export const SCENARIOS = [
     category: 'multi-form-url',
     tag: 'Multi-URL',
     tagVariant: 'gray',
-    description: 'Multi-stage form flow where Part 1 executes on one route and continues automatically on the second route.',
+    description: 'Two-stage form flow where Part 1 is submitted on the first page and continues on the second page.',
     mechanism: '2-Step Flow',
     path: '/scenarios/12'
   },
@@ -182,8 +182,8 @@ export const SCENARIOS = [
     category: 'ajax-spa',
     tag: 'Polling Wait',
     tagVariant: 'purple',
-    description: 'Redirect arrives at destination, but completion message requires 3000ms background polling delay.',
-    mechanism: '3s Poller',
+    description: 'Submission arrives at destination and verifies status with a brief background check.',
+    mechanism: 'Background Verification',
     path: '/scenarios/14'
   },
   {
@@ -193,8 +193,8 @@ export const SCENARIOS = [
     category: 'file-upload',
     tag: 'File Upload',
     tagVariant: 'emerald',
-    description: 'Form has input[type="file"] with single and multiple attributes. Tests DataTransfer file injection.',
-    mechanism: 'Blob Dispatch',
+    description: 'Upload single or multiple files together with standard form details.',
+    mechanism: 'File Attachment',
     path: '/scenarios/15'
   },
   {
@@ -204,52 +204,272 @@ export const SCENARIOS = [
     category: 'multi-form-url',
     tag: 'Dual Forms',
     tagVariant: 'gray',
-    description: 'Two separate forms side by side (e.g. Sender vs Recipient). Tests explicit parent-scope targeting.',
-    mechanism: 'Scoped Selectors',
+    description: 'First form reloads the page upon search to reveal the second details form below, with record-not-found error handling.',
+    mechanism: 'Search & Reveal',
     path: '/scenarios/16'
   },
   {
     id: '17',
     displayId: 'Example 17',
-    title: 'Form Filled, No Visual Feedback',
-    category: 'ajax-spa',
-    tag: 'Edge Case',
+    title: 'Form Reload with Table Append',
+    category: 'reload-direct',
+    tag: 'Table Append',
     tagVariant: 'gray',
-    description: 'Submits payload without producing any DOM message or alert. Validates runner timeout graceful exit.',
-    mechanism: 'Silent Response',
+    description: 'Submits form and reloads the page, appending the new entry to the bottom of the records table below.',
+    mechanism: 'Table Append',
     path: '/scenarios/17'
   },
   {
     id: '18',
     displayId: 'Example 18',
-    title: 'Form Inside Single iframe',
+    title: 'Form Inside Embedded Frame',
     category: 'iframes',
-    tag: 'Single iFrame',
+    tag: 'Single Frame',
     tagVariant: 'gray',
-    description: 'Target form is encapsulated inside an iframe. Tests content-script injection across all frames.',
-    mechanism: 'Frame Context',
+    description: 'The form is embedded inside an independent window frame on the page.',
+    mechanism: 'Embedded Frame',
     path: '/scenarios/18'
   },
   {
     id: '18-1',
     displayId: 'Example 18-1',
-    title: 'iframe Mounts After Delay',
+    title: 'Embedded Frame Loads On Demand',
     category: 'iframes',
-    tag: 'Delayed iFrame',
+    tag: 'On-Demand Frame',
     tagVariant: 'purple',
-    description: 'iframe DOM node is added dynamically 1800ms after load. Assesses frame wait stability.',
-    mechanism: '1800ms Delay',
+    description: 'Click "Load Form" to dynamically load the embedded form window into the page.',
+    mechanism: 'On-Demand Frame',
     path: '/scenarios/18-1'
   },
   {
     id: '19',
     displayId: 'Example 19',
-    title: 'Two iframes on Single Page',
+    title: 'Two Embedded Frames on Single Page',
     category: 'iframes',
-    tag: 'Dual iFrames',
+    tag: 'Dual Frames',
     tagVariant: 'gray',
-    description: 'Page contains two distinct iframe frames simultaneously. Validates multiple frame indexing.',
-    mechanism: 'Multi-Context',
+    description: 'Page contains two independent embedded form windows displayed side by side.',
+    mechanism: 'Dual Frames',
     path: '/scenarios/19'
+  },
+  {
+    id: '20',
+    displayId: 'Example 20',
+    title: 'Mixed States & Dynamic Field Controls',
+    category: 'ajax-spa',
+    tag: 'Dynamic Form',
+    tagVariant: 'purple',
+    description: 'Hide, Disabled, Dynamic Select Options, Check Field Value and Other Form Field',
+    mechanism: 'Mixed Controls',
+    path: '/scenarios/20'
+  },
+  {
+    id: '21',
+    displayId: 'Example 21',
+    title: 'Silent Search with Delayed Table Update',
+    category: 'ajax-spa',
+    tag: 'Silent Search',
+    tagVariant: 'purple',
+    description: 'Search executes without loading spinners, asynchronously replacing existing table records with matching results and edit actions.',
+    mechanism: 'Silent Table Update',
+    path: '/scenarios/21'
+  },
+  {
+    id: '22',
+    displayId: 'Example 22',
+    title: 'Dynamic Radios & Checkboxes (No Value/Name/ID)',
+    category: 'ajax-spa',
+    tag: 'No Attributes',
+    tagVariant: 'purple',
+    description: 'Selecting a dropdown option silently loads related radio and checkbox fields without value, name, or id attributes.',
+    mechanism: 'Dynamic Anonymous Inputs',
+    path: '/scenarios/22'
+  },
+  {
+    id: '23',
+    displayId: 'Example 23',
+    title: 'Multi-Select Triggered Dynamic Table Rows',
+    category: 'ajax-spa',
+    tag: 'Dynamic Table',
+    tagVariant: 'purple',
+    description: 'Multiple selection dropdown dynamically generates table rows containing text inputs, single selects, checkboxes, and radio buttons.',
+    mechanism: 'Multi-Select to Rows',
+    path: '/scenarios/23'
+  },
+  {
+    id: '24',
+    displayId: 'Example 24',
+    title: 'Email Submit with Dynamic File Download',
+    category: 'ajax-spa',
+    tag: 'Dynamic Download',
+    tagVariant: 'purple',
+    description: 'Submitting an email address dynamically generates and downloads a text file with user-specified byte size and payload.',
+    mechanism: 'Dynamic File Download',
+    path: '/scenarios/24'
+  },
+  {
+    id: '25',
+    displayId: 'Example 25',
+    title: 'Multi-Type Tabular Data Benchmark (Scraper Sandbox)',
+    category: 'ajax-spa',
+    tag: 'Multi-Table Scraper',
+    tagVariant: 'purple',
+    description: 'Tabular scraper test sandbox featuring horizontal headings, vertical transposed headers, multi-row rowspan merges, headerless tables, form controls, and image media.',
+    mechanism: 'Diverse Table Archetypes',
+    path: '/scenarios/25'
+  },
+  {
+    id: '26',
+    displayId: 'Example 26',
+    title: 'Beneficiary Registry Table with Reload Edit Flow',
+    category: 'reload-direct',
+    tag: 'Page Reload Edit',
+    tagVariant: 'amber',
+    description: 'Table displaying 15 unique beneficiary registration records. Clicking Edit performs a full page reload passing the ID in URL query to load the edit form.',
+    mechanism: 'Query Param Reload',
+    path: '/scenarios/26'
+  },
+  {
+    id: '27',
+    displayId: 'Example 27',
+    title: 'Beneficiary Table with Inline Form Controls',
+    category: 'ajax-spa',
+    tag: 'Inline Controls',
+    tagVariant: 'purple',
+    description: 'Table displaying 15 beneficiary records with inline text input, select dropdown, checkbox, and row-grouped radio buttons per row.',
+    mechanism: 'Multi-Control Grid',
+    path: '/scenarios/27'
+  },
+  {
+    id: '28',
+    displayId: 'Example 28',
+    title: 'Beneficiary Table with Conditional Edit vs Deleted State',
+    category: 'reload-direct',
+    tag: 'Conditional Actions',
+    tagVariant: 'amber',
+    description: 'Table displaying 15 unique beneficiary records where active rows provide an Edit button (reloading into the edit page with query ID), while removed records show the text "Deleted".',
+    mechanism: 'Conditional Edit Action',
+    path: '/scenarios/28'
+  },
+  {
+    id: '29',
+    displayId: 'Example 29',
+    title: 'Master Header Form with Dynamic Multi-Control Table',
+    category: 'ajax-spa',
+    tag: 'Dynamic Grid',
+    tagVariant: 'purple',
+    description: 'Master form with First Name, Last Name, and Email combined with an expandable table containing input, date, select, multi-select, checkbox, and radio controls in each row.',
+    mechanism: 'Multi-Control Table Grid',
+    path: '/scenarios/29'
+  },
+  {
+    id: '30',
+    displayId: 'Example 30',
+    title: 'Pre-populated Multi-Control Tabular Form Grid',
+    category: 'ajax-spa',
+    tag: 'Existing Table Data',
+    tagVariant: 'purple',
+    description: 'Master form and dynamic tabular grid pre-populated with existing records containing input, date, select, multi-select, dual checkboxes, and radio buttons in each row.',
+    mechanism: 'Pre-populated Table Grid',
+    path: '/scenarios/30'
+  },
+  {
+    id: '31',
+    displayId: 'Example 31',
+    title: 'Single-Row Entry Table with Accumulator Grid',
+    category: 'ajax-spa',
+    tag: 'Row Accumulator',
+    tagVariant: 'purple',
+    description: 'Primary information header and single-row entry table with input, date, select, multi-select, checkboxes, and radio buttons. Clicking "Add Record" appends entries into a lower accumulation table.',
+    mechanism: 'Entry Row to Table Accumulator',
+    path: '/scenarios/31'
+  },
+  {
+    id: '32',
+    displayId: 'Example 32',
+    title: 'Memory Exhaustion Crash (Aw, Snap! Out of Memory)',
+    category: 'ajax-spa',
+    tag: 'Out of Memory',
+    tagVariant: 'rose',
+    description: 'Executes an aggressive memory allocation loop on page load, exhausting the JavaScript heap to trigger Chrome\'s native "Aw, Snap! Error code: Out of Memory" crash screen for resilience testing.',
+    mechanism: 'Heap Exhaustion Loop',
+    path: '/scenarios/32'
+  },
+  {
+    id: '33',
+    displayId: 'Example 33',
+    title: 'Shadow DOM Encapsulated Form (Full Controls)',
+    category: 'ajax-spa',
+    tag: 'Shadow DOM',
+    tagVariant: 'indigo',
+    description: 'Comprehensive form rendered inside an open Shadow DOM root featuring text, email, phone, age, date, time, select, multi-select, checkboxes, radio buttons, and textarea without file upload.',
+    mechanism: 'Open Shadow Root',
+    path: '/scenarios/33'
+  },
+  {
+    id: '34',
+    displayId: 'Example 34',
+    title: 'Public Video Player (Manual Controls)',
+    category: 'ajax-spa',
+    tag: 'Media Stream',
+    tagVariant: 'sky',
+    description: 'Embedded HTML5 public video player with manual playback controls and responsive media container with autoplay disabled.',
+    mechanism: 'HTML5 Video Player',
+    path: '/scenarios/34'
+  },
+  {
+    id: '35',
+    displayId: 'Example 35',
+    title: 'Inline onclick Attribute Event Handlers & Overrides',
+    category: 'ajax-spa',
+    tag: 'Inline Event Overrides',
+    tagVariant: 'purple',
+    description: 'First Name, Last Name, and Email form with Submit and Reset buttons using native inline onclick event functions, designed for testing extension overrides of submit and reset handlers.',
+    mechanism: 'Inline onclick Handlers',
+    path: '/scenarios/35'
+  },
+  {
+    id: '36',
+    displayId: 'Example 36',
+    title: 'Conditional Sections with Input & Dynamic Tabular Fields',
+    category: 'ajax-spa',
+    tag: 'Conditional Sections',
+    tagVariant: 'purple',
+    description: 'Basic details (Name, Email) with two optional checkboxes revealing conditional sections. Each section includes an input box, a table with multiple form fields, and an add row button at the bottom.',
+    mechanism: 'Conditional Tables',
+    path: '/scenarios/36'
+  },
+  {
+    id: '37',
+    displayId: 'Example 37',
+    title: 'Multi-URL Email List Flow with Reload Validation',
+    category: 'multi-form-url',
+    tag: 'Multi-URL Reload',
+    tagVariant: 'purple',
+    description: 'Empty email list with default error notice. Clicking "Add Email" opens a secondary page via full reload. Validates duplicate emails (exists@gmail.com) with in-page error reload, and returns valid emails to the main list with delete actions.',
+    mechanism: 'Multi-URL Reload Flow',
+    path: '/scenarios/37'
+  },
+  {
+    id: '38',
+    displayId: 'Example 38',
+    title: 'Realtime Search Student Registry with Animated Row Deletion',
+    category: 'ajax-spa',
+    tag: 'Realtime Search & Delete',
+    tagVariant: 'purple',
+    description: 'Student directory table with realtime search filtering across names, father names, genders, and classes. Features animated row deletion on click and non-deletable records marked as "No action".',
+    mechanism: 'Realtime Search & Dynamic DOM',
+    path: '/scenarios/38'
+  },
+  {
+    id: '39',
+    displayId: 'Example 39',
+    title: 'Student Registry Table with In-Place Deleted State',
+    category: 'ajax-spa',
+    tag: 'In-Place Status Update',
+    tagVariant: 'purple',
+    description: 'Student directory table with realtime search filtering. Clicking the Delete button keeps the row in the table, removes the button, and displays the static text "Deleted" with active and deleted count tracking.',
+    mechanism: 'In-Place State Transition',
+    path: '/scenarios/39'
   }
 ];

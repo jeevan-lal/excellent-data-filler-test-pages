@@ -1,0 +1,74 @@
+{
+  "scenarioId": "36",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/36",
+    "description": "Basic details with two optional section checkboxes revealing conditional sections with an input box, multi-field tables, and add row buttons",
+    "primaryFields": [
+      {
+        "name": "name",
+        "selector": "#userName36",
+        "fieldSelectorQuery": "input[name=\"userName\"]",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "email",
+        "selector": "#userEmail36",
+        "fieldSelectorQuery": "input[name=\"email\"]",
+        "type": "email",
+        "required": true
+      }
+    ],
+    "sectionToggles": [
+      {
+        "name": "enableSection1",
+        "selector": "#enableSection1Chk36",
+        "fieldSelectorQuery": "input[name=\"enableSection1\"]",
+        "type": "checkbox",
+        "reveals": "#section1-container"
+      },
+      {
+        "name": "enableSection2",
+        "selector": "#enableSection2Chk36",
+        "fieldSelectorQuery": "input[name=\"enableSection2\"]",
+        "type": "checkbox",
+        "reveals": "#section2-container"
+      }
+    ],
+    "section1": {
+      "containerSelector": "#section1-container",
+      "inputBoxSelector": "#section1InputBox36",
+      "tableSelector": "#section1-table",
+      "addRowButtonSelector": "#addRowSection1Btn36",
+      "rowFieldSelectors": {
+        "degree": "input[name^=\"sec1_degree_\"]",
+        "gradDate": "input[name^=\"sec1_date_\"]",
+        "level": "select[name^=\"sec1_level_\"]",
+        "majors": "select[name^=\"sec1_majors_\"]",
+        "honorsCumLaude": "input[name^=\"sec1_chk_cum_\"]",
+        "honorsDeansList": "input[name^=\"sec1_chk_dean_\"]",
+        "gradingScale": "input[name^=\"sec1_grade_scale_\"]"
+      }
+    },
+    "section2": {
+      "containerSelector": "#section2-container",
+      "inputBoxSelector": "#section2InputBox36",
+      "tableSelector": "#section2-table",
+      "addRowButtonSelector": "#addRowSection2Btn36",
+      "rowFieldSelectors": {
+        "role": "input[name^=\"sec2_role_\"]",
+        "startDate": "input[name^=\"sec2_date_\"]",
+        "domain": "select[name^=\"sec2_domain_\"]",
+        "skills": "select[name^=\"sec2_skills_\"]",
+        "isFullTime": "input[name^=\"sec2_chk_full_\"]",
+        "isRemote": "input[name^=\"sec2_chk_rem_\"]",
+        "status": "input[name^=\"sec2_status_\"]"
+      }
+    },
+    "actions": [
+      { "selector": "#submitBtn36", "type": "button", "action": "submit" },
+      { "selector": "#resetBtn36", "type": "button", "action": "reset" }
+    ]
+  }
+}

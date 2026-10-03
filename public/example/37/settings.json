@@ -1,0 +1,29 @@
+{
+  "scenarioId": "37",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/37",
+    "description": "Multi-URL email collection workflow with default empty state error, secondary add page navigation via reload, exists@gmail.com error reload behavior, and email list with delete buttons",
+    "mainPage": {
+      "url": "/scenarios/37",
+      "emptyStateSelector": "#no-emails-error",
+      "emptyStateText": "No emails found. Click \"Add Email\" to add some.",
+      "emailListContainerSelector": "#email-list-container",
+      "addEmailButtonSelector": "#addEmailBtn37",
+      "clearAllEmailsButtonSelector": "#clearAllEmailsBtn37",
+      "finalSubmitButtonSelector": "#finalSubmitBtn37",
+      "deleteButtonSelector": "button[id^=\"deleteEmailBtn37_\"]"
+    },
+    "addPage": {
+      "url": "/examples/37/add",
+      "noteSelector": "#email-add-note",
+      "noteText": "Enter an email address to add to the list (if you fill exists@gmail.com or an email that already exists, then error coming).",
+      "inputSelector": "#newEmail37",
+      "insertButtonSelector": "#insertMailBtn37",
+      "backButtonSelector": "#backBtn37",
+      "errorNoticeSelector": "#exists-error-notice",
+      "triggerErrorEmail": "exists@gmail.com",
+      "validateDuplicates": true
+    }
+  }
+}
