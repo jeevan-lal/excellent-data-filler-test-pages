@@ -1,0 +1,16 @@
+{
+  "scenarioId": "20",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/20",
+    "autoSubmit": true,
+    "delayMs": 300,
+    "fields": [
+      { "selector": "#prefilledField20", "type": "text", "checkExisting": true },
+      { "selector": "#delayedField20", "type": "text", "waitForArrival": true },
+      { "selector": "#readonlyField20", "type": "text", "readonly": true },
+      { "selector": "#disabledField20", "type": "text", "disabled": true },
+      { "selector": "#dynamicSelect20", "type": "select", "waitForOptions": true }
+    ]
+  }
+}

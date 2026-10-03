@@ -1,0 +1,14 @@
+{
+  "scenarioId": "24",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/24",
+    "autoSubmit": true,
+    "delayMs": 400,
+    "fields": [
+      { "selector": "#userEmail24", "type": "email" },
+      { "selector": "#sizePoint3MB", "type": "button", "action": "click" },
+      { "selector": "#downloadBtn24", "type": "button", "action": "click" }
+    ]
+  }
+}

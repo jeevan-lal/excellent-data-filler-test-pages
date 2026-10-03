@@ -1,0 +1,29 @@
+{
+  "scenarioId": "33",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/33",
+    "description": "Comprehensive form rendered inside an open Shadow DOM root featuring text, email, phone, age, date, time, select, multi-select, checkboxes, radio buttons, and textarea without file upload",
+    "shadowHost": "#shadow-host-33",
+    "isShadowDom": true,
+    "fields": [
+      { "name": "fullName", "selector": "#shadowFullName33", "type": "text" },
+      { "name": "email", "selector": "#shadowEmail33", "type": "email" },
+      { "name": "phone", "selector": "#shadowPhone33", "type": "tel" },
+      { "name": "age", "selector": "#shadowAge33", "type": "number" },
+      { "name": "date", "selector": "#shadowDate33", "type": "date" },
+      { "name": "time", "selector": "#shadowTime33", "type": "time" },
+      { "name": "department", "selector": "#shadowDepartment33", "type": "select" },
+      { "name": "skills", "selector": "#shadowSkills33", "type": "select-multiple" },
+      { "name": "prefEmail", "selector": "#shadowChkEmail33", "type": "checkbox" },
+      { "name": "prefSms", "selector": "#shadowChkSms33", "type": "checkbox" },
+      { "name": "prefPush", "selector": "#shadowChkPush33", "type": "checkbox" },
+      { "name": "subscriptionTier", "selector": "input[name='subscriptionTier']", "type": "radio" },
+      { "name": "notes", "selector": "#shadowNotes33", "type": "textarea" }
+    ],
+    "actions": [
+      { "selector": "#shadowSubmitBtn33", "type": "button", "action": "click" },
+      { "selector": "#shadowResetBtn33", "type": "button", "action": "click" }
+    ]
+  }
+}

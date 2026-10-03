@@ -1,0 +1,32 @@
+{
+  "scenarioId": "29",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/29",
+    "description": "Master header form with dynamic multi-control table containing input, date, select, multi-select, dual horizontal checkboxes, and horizontal radio buttons",
+    "masterFields": [
+      { "selector": "#firstName29", "type": "text" },
+      { "selector": "#lastName29", "type": "text" },
+      { "selector": "#userEmail29", "type": "email" }
+    ],
+    "table": {
+      "selector": "#dynamic-grid-table",
+      "addRowButtonSelector": "#addRowBtn29",
+      "initialRowsCount": 1,
+      "columns": [
+        { "name": "input", "selector": "input[id^='input-text-']", "type": "text" },
+        { "name": "date", "selector": "input[id^='input-date-']", "type": "date" },
+        { "name": "select", "selector": "select[id^='select-category-']", "type": "select" },
+        { "name": "selectMulti", "selector": "select[id^='select-multi-']", "type": "select-multiple" },
+        { "name": "checkboxActive", "selector": "input[id^='chk-active-']", "type": "checkbox" },
+        { "name": "checkboxUrgent", "selector": "input[id^='chk-urgent-']", "type": "checkbox" },
+        { "name": "radioStandard", "selector": "input[id^='radio-p1-']", "type": "radio" },
+        { "name": "radioUrgent", "selector": "input[id^='radio-p2-']", "type": "radio" }
+      ]
+    },
+    "actions": [
+      { "selector": "#submitBtn29", "type": "button", "action": "click" },
+      { "selector": "#resetBtn29", "type": "button", "action": "click" }
+    ]
+  }
+}

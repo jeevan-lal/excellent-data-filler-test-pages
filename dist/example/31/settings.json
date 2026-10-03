@@ -1,0 +1,35 @@
+{
+  "scenarioId": "31",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/31",
+    "description": "Primary information section and single-row entry table with Add Record button accumulating records into a below table",
+    "masterFields": [
+      { "selector": "#firstName31", "type": "text" },
+      { "selector": "#lastName31", "type": "text" },
+      { "selector": "#userEmail31", "type": "email" }
+    ],
+    "entryRow": {
+      "selector": "#entry-row-table",
+      "fields": [
+        { "name": "input", "selector": "#entryInput31", "type": "text" },
+        { "name": "date", "selector": "#entryDate31", "type": "date" },
+        { "name": "select", "selector": "#entrySelect31", "type": "select" },
+        { "name": "multiSelect", "selector": "#entryMultiSelect31", "type": "select-multiple" },
+        { "name": "checkboxActive", "selector": "#entryChkActive31", "type": "checkbox" },
+        { "name": "checkboxUrgent", "selector": "#entryChkUrgent31", "type": "checkbox" },
+        { "name": "radioStandard", "selector": "#entryRadioStd31", "type": "radio" },
+        { "name": "radioExpress", "selector": "#entryRadioUrg31", "type": "radio" }
+      ],
+      "addRecordButton": "#addRecordBtn31"
+    },
+    "accumulatedTable": {
+      "selector": "#added-records-table",
+      "rowRemoveButtonSelector": "button[id^='removeRecordBtn31-']"
+    },
+    "actions": [
+      { "selector": "#submitBtn31", "type": "button", "action": "click" },
+      { "selector": "#resetBtn31", "type": "button", "action": "click" }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "scenarioId": "28",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/28",
+    "description": "Beneficiary registry table with conditional Edit buttons and Deleted status indicators",
+    "table": {
+      "selector": "#beneficiary-table",
+      "recordsCount": 15,
+      "editButtonSelector": "a[id^='edit-btn-']",
+      "deletedLabelSelector": "span[id^='deleted-label-']"
+    },
+    "editForm": {
+      "urlPattern": "/scenarios/28?id=",
+      "fields": [
+        { "selector": "#regNo", "type": "text", "readonly": true },
+        { "selector": "#benName", "type": "text" },
+        { "selector": "#fatherName", "type": "text" },
+        { "selector": "#userEmail", "type": "email" },
+        { "selector": "#submitBtn28", "type": "button", "action": "click" }
+      ]
+    }
+  }
+}

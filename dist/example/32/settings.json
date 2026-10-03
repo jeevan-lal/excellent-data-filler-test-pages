@@ -1,0 +1,22 @@
+{
+  "scenarioId": "32",
+  "version": "1.0.0",
+  "fillerConfig": {
+    "targetUrl": "/scenarios/32",
+    "safeUrl": "/scenarios/32?autocrash=false",
+    "description": "Memory exhaustion loop scenario designed to trigger Chrome's native Aw Snap Out of Memory crash screen on page load",
+    "crashControls": {
+      "triggerButton": "#triggerCrashBtn32",
+      "previewButton": "#previewAwSnapBtn32"
+    },
+    "fields": [
+      { "name": "testName", "selector": "#crashTestName32", "type": "text" },
+      { "name": "testEmail", "selector": "#crashTestEmail32", "type": "email" },
+      { "name": "notes", "selector": "#crashTestNotes32", "type": "textarea" }
+    ],
+    "actions": [
+      { "selector": "#submitBtn32", "type": "button", "action": "click" },
+      { "selector": "#resetBtn32", "type": "button", "action": "click" }
+    ]
+  }
+}
